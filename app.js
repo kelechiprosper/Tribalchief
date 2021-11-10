@@ -19,7 +19,15 @@ function calculateResults(e){
     //  compute monthly Payment
     const x = maths.pow(1 + calculatedInterest, calculatedPayment);
     const monthly = (principal*x*calculatedInterest)/(x-1);
-    
+
+    if(isFinite(monthly)) {
+        monthlyPayment.value = monthly.toFixed(2);
+        totalPayment.value =(monthly * calculatedPayments).toFixed(2);
+        totalInterest.value = ((monthly * calculatedPaments) - principal).toFixed(2);
+
+    }else{
+        console.log('please check your numbers');
+    }
     
     e.preventDefault();
 }
